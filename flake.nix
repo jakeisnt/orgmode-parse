@@ -8,7 +8,7 @@
   let
     system = "x86_64-linux";
     pkgs = import nixpkgs { inherit system; };
-    compiler = "ghc884";
+    compiler = "ghc8104";
   in
   {
     defaultPackage.${system} =

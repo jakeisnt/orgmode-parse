@@ -19,5 +19,5 @@ node_modules
 TAGS
 .stack-work
 tmp/
-result/**/*
-result-doc/**/*
+result
+result-doc

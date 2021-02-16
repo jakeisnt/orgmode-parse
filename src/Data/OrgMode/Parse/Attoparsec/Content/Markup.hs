@@ -20,9 +20,9 @@ module Data.OrgMode.Parse.Attoparsec.Content.Markup
 where
 
 import           Control.Applicative  (optional)
-#if __GLASGOW_HASKELL__ >= 810
-import           Data.Bifoldable      (bifoldMap)
-#endif
+-- #if __GLASGOW_HASKELL__ >= 810
+-- import           Data.Bifoldable      (bifoldMap)
+-- #endif
 import           Data.Attoparsec.Text (Parser, anyChar, char, choice,
                                        endOfInput, isEndOfLine, manyTill,
                                        parseOnly, skipSpace, takeWhile)
@@ -106,13 +106,13 @@ createTokenParser innerParser Token{..} = do
   content <- takeWhile (/= keyChar)
   _ <- char keyChar
   -- We need another parser passed in to parse the markup inside the markup
-#if __GLASGOW_HASKELL__ >= 810
-  bifoldMap fail (return . markup) (parseOnly innerParser content)
-#else
+-- #if __GLASGOW_HASKELL__ >= 810
+--   bifoldMap fail (return . markup) (parseOnly innerParser content)
+-- #else
   case parseOnly innerParser content of
     Left s  -> fail s
     Right a -> return (markup a)
-#endif
+-- #endif
 
 -- | The fallback default if all markup parsers fail.
 parsePlainText :: Parser MarkupText
