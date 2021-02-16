@@ -19,3 +19,4 @@ node_modules
 TAGS
 .stack-work
 tmp/
+result/
