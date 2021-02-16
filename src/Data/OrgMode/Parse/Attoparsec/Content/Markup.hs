@@ -20,7 +20,6 @@ module Data.OrgMode.Parse.Attoparsec.Content.Markup
 where
 
 import           Control.Applicative  (optional)
-import           Data.Semigroup       ((<>))
 #if __GLASGOW_HASKELL__ >= 810
 import           Data.Bifoldable      (bifoldMap)
 #endif

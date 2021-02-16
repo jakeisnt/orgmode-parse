@@ -24,7 +24,6 @@ import           Data.Attoparsec.Text                              (Parser,
                                                                     notChar,
                                                                     takeTill)
 import           Data.Functor                                      (($>))
-import           Data.Semigroup                                    ((<>))
 import           Data.Text                                         (Text, cons)
 
 import           Data.OrgMode.Parse.Attoparsec.Util.ParseLinesTill

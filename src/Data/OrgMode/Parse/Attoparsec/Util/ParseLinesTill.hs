@@ -30,7 +30,6 @@ import           Data.Attoparsec.Text (Parser, anyChar, atEnd, char, endOfLine,
                                        parseOnly, takeTill, (<?>))
 import           Data.Foldable        (Foldable (..))
 import           Data.Functor         (($>))
-import           Data.Semigroup       ((<>))
 import           Data.Text            (Text, snoc)
 
 import qualified Control.Monad

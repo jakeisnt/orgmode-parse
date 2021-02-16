@@ -57,7 +57,6 @@ import           Data.Aeson                 (FromJSON (..), ToJSON (..),
                                              genericToEncoding, object, (.:),
                                              (.=))
 import           Data.HashMap.Strict.InsOrd (InsOrdHashMap)
-import           Data.Semigroup             (Semigroup)
 import           Data.Text                  (Text)
 import           Data.Thyme.Calendar        (YearMonthDay (..))
 import           Data.Thyme.LocalTime       (Hour, Hours, Minute, Minutes)

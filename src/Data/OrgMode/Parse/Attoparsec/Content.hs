@@ -18,7 +18,6 @@ where
 import           Data.Attoparsec.Text                            (Parser,
                                                                   eitherP,
                                                                   many')
-import           Data.Semigroup                                  ((<>))
 
 import           Data.OrgMode.Parse.Attoparsec.Content.List      (parseList)
 import           Data.OrgMode.Parse.Attoparsec.Content.Paragraph (parseParagraph)

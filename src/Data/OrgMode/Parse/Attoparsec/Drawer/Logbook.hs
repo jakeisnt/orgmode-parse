@@ -17,7 +17,6 @@ module Data.OrgMode.Parse.Attoparsec.Drawer.Logbook
 )
 where
 
-import           Control.Applicative                          ((*>))
 import           Data.Attoparsec.Text
 import           Data.Attoparsec.Types                        as Attoparsec
 import           Data.Text                                    (Text)

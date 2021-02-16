@@ -28,7 +28,6 @@ import           Data.Attoparsec.Text
 import           Data.Attoparsec.Types      as Attoparsec (Parser)
 import           Data.Functor               (($>))
 import           Data.Maybe                 (listToMaybe)
-import           Data.Semigroup             ((<>))
 import           Data.Text                  (Text)
 import           Data.Thyme.Format          (buildTime, timeParser)
 import           Data.Thyme.LocalTime       (Hours, Minutes)

@@ -19,7 +19,6 @@ module Data.OrgMode.Parse.Attoparsec.Drawer.Property
 )
 where
 
-import           Control.Applicative                          ((*>), (<*))
 import           Data.Attoparsec.Text                         as T
 import           Data.Attoparsec.Types                        as Attoparsec
 import           Data.HashMap.Strict.InsOrd                   (fromList)

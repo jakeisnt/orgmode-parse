@@ -4,9 +4,7 @@
 
 module Timestamps where
 
-import           Control.Applicative        ((<*))
 import           Data.Attoparsec.Text       (endOfLine)
-import           Data.Semigroup             ((<>))
 import           Data.Maybe                 (isNothing)
 import           Data.OrgMode.Parse
 import qualified Data.Text                  as T

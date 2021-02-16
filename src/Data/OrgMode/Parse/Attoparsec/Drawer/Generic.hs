@@ -19,7 +19,6 @@ module Data.OrgMode.Parse.Attoparsec.Drawer.Generic
 )
 where
 
-import           Control.Applicative                ((*>), (<*))
 import           Data.Attoparsec.Text               (Parser, asciiCI, char,
                                                      manyTill, skipSpace,
                                                      takeWhile1, (<?>))
