@@ -22,9 +22,6 @@ where
 
 import           Control.Arrow        ((&&&))
 import           Control.Monad        (guard)
--- #if __GLASGOW_HASKELL__ >= 810
--- import           Data.Bifoldable      (bifoldMap)
--- #endif
 import           Data.Attoparsec.Text (Parser, anyChar, atEnd, char, endOfLine,
                                        isEndOfLine, isHorizontalSpace, many1,
                                        parseOnly, takeTill, (<?>))
@@ -75,14 +72,10 @@ takeContentBreak = breakByEmptyLine <> headline
 -- | Transform a text content as block to work with current parser state
 feedParserText :: Parser s -> Text -> Parser s
 
--- #if __GLASGOW_HASKELL__ >= 810
--- feedParserText = bifoldMap fail return . parseOnly
--- #else
 feedParserText  p t =
   case parseOnly p t of
     Left s  -> fail s
     Right s -> return s
--- #endif
 
 type Recursive m b a = b -> (b, Parser (m a))
 
