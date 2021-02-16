@@ -13,5 +13,15 @@
   {
     defaultPackage.${system} =
       pkgs.haskell.packages.${compiler}.callPackage ./default.nix { };
-  };
-}
+      devShell = pkgs.mkShell {
+        buildInputs = with pkgs;[
+          haskell-language-server 
+          (haskellPackages.ghcWithPackages [
+            hoogle
+            aeson
+            attoparsec
+          ])
+        ];
+      };
+    };
+  }

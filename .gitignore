@@ -21,3 +21,4 @@ TAGS
 tmp/
 result
 result-doc
+.direnv/
