@@ -10,11 +10,11 @@
     utils.lib.eachDefaultSystem (system:
       let
         pkgs = import nixpkgs { inherit system; };
-        compiler = "ghc8104";
-        package = with pkgs.haskell.packages.${compiler};
+        package = with pkgs.haskellPackages;
           callPackage (callCabal2nix "orgmode-parse" ./.) { };
       in {
         defaultPackage = package;
+        packages.orgmode-parse = package;
         devShell = package.env;
       });
 }
