@@ -12,36 +12,10 @@
         system = "x86_64-linux";
         pkgs = import nixpkgs { inherit system; };
         compiler = "ghc8104";
-      in {
-        defaultPackage =
+        package =
           pkgs.haskell.packages.${compiler}.callPackage ./default.nix { };
-        devShell = pkgs.mkShell {
-          buildInputs = with pkgs; [
-            pkgs.haskellPackages.cabal-install
-            (haskellPackages.ghcWithPackages (ps:
-              with ps; [
-                ghcide
-                aeson
-                attoparsec
-                base
-                bytestring
-                containers
-                free
-                hashable
-                HUnit
-                insert-ordered-containers
-                neat-interpolation
-                old-locale
-                semigroups
-                tasty
-                tasty-hunit
-                text
-                thyme
-                unordered-containers
-
-                hoogle
-              ]))
-          ];
-        };
+      in {
+        defaultPackage = package;
+        devShell = package.env;
       });
 }
