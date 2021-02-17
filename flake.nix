@@ -1,27 +1,47 @@
 {
   description = "orgmode-parse flake";
+  inputs = {
+    nixpkgs.url = "github:NixOS/nixpkgs/master";
+    haskellNix.url = "github:input-output-hk/haskell.nix/master";
+    utils.url = "github:numtide/flake-utils";
+  };
 
-  inputs.nixpkgs.url = "github:NixOS/nixpkgs/master";
-  inputs.haskellNix.url = "github:input-output-hk/haskell.nix/master";
+  outputs = { self, haskellNix, nixpkgs, utils, ... }:
+    utils.lib.eachDefaultSystem (system:
+      let
+        system = "x86_64-linux";
+        pkgs = import nixpkgs { inherit system; };
+        compiler = "ghc8104";
+      in {
+        defaultPackage =
+          pkgs.haskell.packages.${compiler}.callPackage ./default.nix { };
+        devShell = pkgs.mkShell {
+          buildInputs = with pkgs; [
+            pkgs.haskellPackages.cabal-install
+            (haskellPackages.ghcWithPackages (ps:
+              with ps; [
+                ghcide
+                aeson
+                attoparsec
+                base
+                bytestring
+                containers
+                free
+                hashable
+                HUnit
+                insert-ordered-containers
+                neat-interpolation
+                old-locale
+                semigroups
+                tasty
+                tasty-hunit
+                text
+                thyme
+                unordered-containers
 
-  outputs = { self, haskellNix, nixpkgs }: 
-  let
-    system = "x86_64-linux";
-    pkgs = import nixpkgs { inherit system; };
-    compiler = "ghc8104";
-  in
-  {
-    defaultPackage.${system} =
-      pkgs.haskell.packages.${compiler}.callPackage ./default.nix { };
-      devShell = pkgs.mkShell {
-        buildInputs = with pkgs;[
-          haskell-language-server 
-          (haskellPackages.ghcWithPackages [
-            hoogle
-            aeson
-            attoparsec
-          ])
-        ];
-      };
-    };
-  }
+                hoogle
+              ]))
+          ];
+        };
+      });
+}
